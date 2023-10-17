@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(16, 190, 190) !important;
+}
+
+.btn-info {
+    background-color: rgb(16, 190, 190) !important;
+    padding: 3px 6px !important;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#paragraph-main-site {
+    margin: 0%;
+}
