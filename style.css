@@ -48,3 +48,11 @@ body {
 .new-background-color-red:hover {
     background-color: red;
 }
+
+.btn-info:hover {
+    background-color: rgb(29, 183, 183) !important;
+}
+
+.none {
+    background-color: none;
+}
