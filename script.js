@@ -34,7 +34,7 @@ let questions = [
 ];
 
 let curentQuestion = 0;
-
+let correctAnswers = 0;
 
 function init() {
     let lengthOfQuestions = document.getElementById('length-of-four');
@@ -50,6 +50,7 @@ function disableBtn() {
 
 
 function showQuestion() {
+
     let currentQuestionText = document.getElementById('current-question');
     currentQuestionText.innerHTML = `<h2>${questions[curentQuestion]['question']}</h2>`;
 
@@ -62,6 +63,7 @@ function showQuestion() {
     secondAnswer.innerHTML = `${questions[curentQuestion]['answer_2']}`;
     thirdAnswer.innerHTML = `${questions[curentQuestion]['answer_3']}`;
     fourthAnswer.innerHTML = `${questions[curentQuestion]['answer_4']}`;
+
 }
 
 function clickOnButton(selection) {
@@ -70,10 +72,11 @@ function clickOnButton(selection) {
     let lastCharacter = selection.slice(-1);
 
     let greenAnswer = document.getElementById('answer_3');
-    
-    if(lastCharacter  == questions[curentQuestion]['right_answer']) {
+
+    if (lastCharacter == questions[curentQuestion]['right_answer']) {
         answer.classList.add('new-background-color-green');
         answer.classList.add('new-background-color-green:hover');
+        correctAnswers++;
     } else {
         answer.classList.add('new-background-color-red');
         answer.classList.add('new-background-color-red:hover');
@@ -81,29 +84,35 @@ function clickOnButton(selection) {
     }
 }
 
-
-
-function nextQuestion () {
+function nextQuestion() {
     curentQuestion++;
-    document.getElementById('current-question-number').innerHTML = `${curentQuestion+1} `;
-    document.getElementById('nextQuestion').disabled = true;
-    let currentQuestionText = document.getElementById('current-question');
-    currentQuestionText.innerHTML = `<h2>${questions[curentQuestion]['question']}</h2>`;
+    if (curentQuestion >= 4) {
+        document.getElementById('showWhenFinish').style = '';
+        document.getElementById('alwaysShown').style = "display: none !important";
+        document.getElementById('main-img-topic').style = 'display: none';
+        document.getElementById('lengthOfJson').innerHTML = questions.length;
+        document.getElementById('correctAnswers').innerHTML = correctAnswers;
+    } else {
+        document.getElementById('current-question-number').innerHTML = `${curentQuestion + 1} `;
+        document.getElementById('nextQuestion').disabled = true;
+        let currentQuestionText = document.getElementById('current-question');
+        currentQuestionText.innerHTML = `<h2>${questions[curentQuestion]['question']}</h2>`;
 
-    let firstAnswer = document.getElementById('answer_1');
-    let secondAnswer = document.getElementById('answer_2');
-    let thirdAnswer = document.getElementById('answer_3');
-    let fourthAnswer = document.getElementById('answer_4');
+        let firstAnswer = document.getElementById('answer_1');
+        let secondAnswer = document.getElementById('answer_2');
+        let thirdAnswer = document.getElementById('answer_3');
+        let fourthAnswer = document.getElementById('answer_4');
 
-    firstAnswer.innerHTML = `${questions[curentQuestion]['answer_1']}`;
-    secondAnswer.innerHTML = `${questions[curentQuestion]['answer_2']}`;
-    thirdAnswer.innerHTML = `${questions[curentQuestion]['answer_3']}`;
-    fourthAnswer.innerHTML = `${questions[curentQuestion]['answer_4']}`;
+        firstAnswer.innerHTML = `${questions[curentQuestion]['answer_1']}`;
+        secondAnswer.innerHTML = `${questions[curentQuestion]['answer_2']}`;
+        thirdAnswer.innerHTML = `${questions[curentQuestion]['answer_3']}`;
+        fourthAnswer.innerHTML = `${questions[curentQuestion]['answer_4']}`;
 
-    resetColor();
+        resetColor();
+    }
 }
 
-function resetColor() { 
+function resetColor() {
     document.getElementById('answer_1').classList.remove('new-background-color-green');
     document.getElementById('answer_1').classList.remove('new-background-color-red');
     document.getElementById('answer_2').classList.remove('new-background-color-green');

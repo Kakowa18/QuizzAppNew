@@ -41,6 +41,7 @@ body {
 .new-background-color-green:hover {
     background-color: green;
 }
+
 .new-background-color-red {
     background-color: red;
 }
@@ -55,4 +56,17 @@ body {
 
 .none {
     background-color: none;
+}
+
+#winner {
+    width: 100%;
+}
+
+#notAlwaysShown {
+    text-align: center !important;
+    color: rgb(168, 146, 24);
+}
+
+#howMuchAreRight {
+    text-align: center;
 }

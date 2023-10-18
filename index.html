@@ -17,7 +17,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body onload="init()">
+<body onload="init()" id="body">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">QuizzApp</span>
@@ -26,8 +26,17 @@
 
     <div class="container">
         <div class="card" style="width: 32rem !important;">
-            <img src="img/main-pic.jpg" class="card-img-top" alt="...">
-            <div class="card-body d-grid gap-3">
+            <img src="img/main-pic.jpg" class="card-img-top" alt="..." id="main-img-topic">
+            <div id="showWhenFinish" style="display: none;"> 
+                <h5 class="card-title" id="notAlwaysShown">FINISHED!</h5>
+
+                <img src="img/winner.jpg" alt="winner-pic" id="winner">
+
+                <div id="howMuchAreRight">
+                    Du hast <b id="correctAnswers"></b> Fragen von <b id="lengthOfJson"></b>  richtig beantwortet!
+                </div>
+            </div>
+            <div class="card-body d-grid gap-3" id="alwaysShown">
                 <h5 class="card-title" id="current-question">Frage</h5>
                 <div class="card" onclick="clickOnButton('answer_1')">
                     <div class="card-body clickable-card" id="answer_1">
