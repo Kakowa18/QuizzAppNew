@@ -67,6 +67,9 @@ function showQuestion() {
 }
 
 function clickOnButton(selection) {
+
+    
+
     document.getElementById('nextQuestion').disabled = false;
     let answer = document.getElementById(selection);
     let lastCharacter = selection.slice(-1);
@@ -77,22 +80,41 @@ function clickOnButton(selection) {
         answer.classList.add('new-background-color-green');
         answer.classList.add('new-background-color-green:hover');
         correctAnswers++;
+
     } else {
         answer.classList.add('new-background-color-red');
         answer.classList.add('new-background-color-red:hover');
         greenAnswer.classList.add('new-background-color-green')
     }
+
+    
+
 }
 
 function nextQuestion() {
     curentQuestion++;
+
+    let percent = curentQuestion / questions.length;
+    percent = Math.round(percent * 100);
+    document.getElementById('progress').innerHTML = `${percent} %`;
+    document.getElementById('progress').style.width = `${percent}%`;
     if (curentQuestion >= 4) {
         document.getElementById('showWhenFinish').style = '';
         document.getElementById('alwaysShown').style = "display: none !important";
-        document.getElementById('main-img-topic').style = 'display: none';
+        document.getElementById('main-img-topic').src = 'img/winner.jpg';
+        document.getElementById('main-img-topic').classList.add('newBorder');
         document.getElementById('lengthOfJson').innerHTML = questions.length;
         document.getElementById('correctAnswers').innerHTML = correctAnswers;
+        document.getElementById('progress').style.width = `100%`;
+        document.getElementById('showWhenFinish').innerHTML += `
+        <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated blue-color" role="progressbar"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%" id="progress"></div>
+                </div>
+        `;
     } else {
+
+
         document.getElementById('current-question-number').innerHTML = `${curentQuestion + 1} `;
         document.getElementById('nextQuestion').disabled = true;
         let currentQuestionText = document.getElementById('current-question');

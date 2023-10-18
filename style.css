@@ -65,8 +65,26 @@ body {
 #notAlwaysShown {
     text-align: center !important;
     color: rgb(168, 146, 24);
+    font-size: 32px;
 }
 
 #howMuchAreRight {
     text-align: center;
+}
+
+.newBorder {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+
+#showWhenFinish {
+    margin-bottom: 32px;
+}
+
+.blue-color {
+    background-color: rgb(29, 183, 183) !important;
+}
+
+#progress {
+    color: rgb(29, 183, 183) !important;
 }
